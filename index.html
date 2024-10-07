@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphics in Android</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none; /* Hide all slides by default */
+        }
+        .active {
+            display: block; /* Show only the active slide */
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #666;
+        }
+        p {
+            color: #444;
+            line-height: 1.6;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide active">
+        <h1>Graphics in Android</h1>
+        <h2>Introduction</h2>
+        <p>Android provides various APIs for drawing graphics and creating visual elements in applications. This presentation will cover the key methods for graphics rendering in Android.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Canvas API</h2>
+        <p>The Canvas API is the primary way to draw 2D graphics in Android. It provides methods for drawing shapes, text, and images on a bitmap.</p>
+    </div>
+
+    <div class="slide">
+        <h2>SurfaceView</h2>
+        <p>SurfaceView allows for drawing on a separate thread, enabling smoother animations and graphics rendering. It’s ideal for games and other interactive applications.</p>
+    </div>
+
+    <div class="slide">
+        <h2>OpenGL ES</h2>
+        <p>For 3D graphics, Android supports OpenGL ES, which allows for hardware-accelerated rendering. This is crucial for high-performance applications like games.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Conclusion</h2>
+        <p>Understanding these graphics rendering methods is essential for Android developers aiming to create visually appealing applications. Choosing the right approach depends on the specific requirements of your app.</p>
+    </div>
+
+    <button onclick="prevSlide()">Previous</button>
+    <button onclick="nextSlide()">Next</button>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Initialize the first slide
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
